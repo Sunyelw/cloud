@@ -1,0 +1,10 @@
+#spring:
+#  application:
+#    name: eureka-provider
+#  cloud:
+#    config:
+#      name: hy-eureka-provider
+#      uri: https://gitee.com/Sunyelw/springcloud-config.git
+#      profile: dev
+#      label: master
+#      failFast: true
