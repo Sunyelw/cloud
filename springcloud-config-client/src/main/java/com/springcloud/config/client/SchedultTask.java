@@ -1,9 +1,11 @@
 package com.springcloud.config.client;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Random;
@@ -18,11 +20,12 @@ import java.util.Set;
  * 创建时间:   2018/8/7 20:22
  */
 @Component
+@Slf4j
 public class SchedultTask {
 
 	@Scheduled(cron = "0/5 * *  * * ?")
 	public void tasks() {
-		System.out.println(new Date().toLocaleString() + "AA");
+		log.info("now is:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 	}
 
 	/**
