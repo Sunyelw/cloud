@@ -1,15 +1,10 @@
-server:
-  port: ${spring.cloud.config.server.port}
+spring:
+  application:
+    name: config-client
 
 eureka:
   client:
     serviceUrl:
       defaultZone: ${eureka.client.serviceUrl.defaultZone}
-
-# 尝试 读取配置中心并注册到eureka上
-spring:
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        serviceId: config-server
+server:
+  port: ${server.port}
