@@ -1,4 +1,4 @@
-package com.springboot.eureka.provider;
+package com.spring.cloud;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -6,17 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @author Sunyelw
- */
-@SpringBootApplication
 @RestController
-public class EurekaProviderApplication {
-
-	@RequestMapping("/")
-	public String homeAll() {
-		return "Hello world";
-	}
+@SpringBootApplication
+public class EurekaProviderOneApplication {
 
 	@Value("${server.port}")
 	private String port;
@@ -27,6 +19,6 @@ public class EurekaProviderApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaProviderApplication.class, args);
+		SpringApplication.run(EurekaProviderOneApplication.class, args);
 	}
 }

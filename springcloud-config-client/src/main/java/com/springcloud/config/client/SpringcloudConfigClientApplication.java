@@ -20,6 +20,12 @@ public class SpringcloudConfigClientApplication {
 	@Value("${eureka.client.serviceUrl.defaultZone}")
 	private String eureka;
 
+	@Value("${user.cron.name}")
+	private String name;
+
+	@Value("${user.cron.name.age}")
+	private String age;
+
 	@RequestMapping("/hello")
 	public String hello() {
 		return "hello . " + config;
