@@ -19,6 +19,7 @@
         <module>eureka_provider_2</module>
 		<module>eureka_consume</module>
 		<module>feign_consume</module>
+		<module>springcloud_database</module>
 	</modules>
 
 	<name>cloud</name>
