@@ -1,7 +1,6 @@
 package com.springboot.feignconsume;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 创建时间:   2018/8/20 20:38
  */
 @FeignClient("eureka-provider")
-@Service
 public interface HomeService {
 
 	@GetMapping("/home")
