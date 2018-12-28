@@ -3,9 +3,10 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
+    leaseExpirationDurationInSeconds: 11 # EUREKA_SERVER 服务端间隔多久没收到心跳信息，移除instance
+    prefer-ip-address: true
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname:localhost}:${server.port}/eureka/

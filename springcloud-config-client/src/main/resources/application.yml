@@ -6,5 +6,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${eureka.client.serviceUrl.defaultZone}
+    fetchRegistry: false
 server:
   port: ${server.port}
