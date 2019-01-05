@@ -20,6 +20,7 @@
 		<module>eureka_consume</module>
 		<module>feign_consume</module>
 		<module>springcloud_database</module>
+		<module>spring-practice-thread</module>
 	</modules>
 
 	<name>cloud</name>
