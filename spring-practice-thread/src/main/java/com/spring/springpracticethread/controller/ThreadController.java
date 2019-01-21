@@ -1,10 +1,9 @@
 package com.spring.springpracticethread.controller;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.spring.springpracticethread.service.IThreadHandleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 项目名称:   pinkstone
@@ -14,17 +13,20 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 创建人:     huangyang
  * 创建时间:   2019/1/5 10:42
  */
-@Controller
+@RestController
 public class ThreadController {
 
 	@Autowired
 	private IThreadHandleService iThreadHandleService;
 
-	@GetMapping("/1")
-	public void demo() {
+	@GetMapping("/hello")
+	public String demo() {
+
+		System.out.println("==================");
 
 		iThreadHandleService.handle();
 
+		return "hello";
 	}
 
 

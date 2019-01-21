@@ -2,7 +2,8 @@ package com.spring.springpracticethread.sync;
 
 import com.spring.springpracticethread.service.IThreadService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * 项目名称:   pinkstone
@@ -20,17 +21,23 @@ public class ThreadExecutorRunnable implements Runnable {
 
 	private int i;
 
-	public ThreadExecutorRunnable(IThreadService iThreadService, int i) {
+	private List<String> strList;
+
+	public ThreadExecutorRunnable(IThreadService iThreadService, List<String> strList) {
 		this.iThreadService = iThreadService;
-		this.i = i;
+		this.strList = strList;
 	}
 
 	@Override
 	public void run() {
 
-		log.error("thread {} start.........", Thread.currentThread().getId());
+		log.error("thread {} start.........", Thread.currentThread().getName());
 
-		iThreadService.printTest();
+		for (String str : strList) {
+			log.error("{} , hello {}", Thread.currentThread().getName(), str);
+		}
+
+//		iThreadService.printTest();
 
 	}
 }
