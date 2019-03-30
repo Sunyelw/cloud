@@ -21,6 +21,7 @@
 		<module>feign_consume</module>
 		<module>springcloud_database</module>
 		<module>spring-practice-thread</module>
+		<module>spring-code</module>
 	</modules>
 
 	<name>cloud</name>

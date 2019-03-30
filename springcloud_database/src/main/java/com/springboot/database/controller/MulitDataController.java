@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.springboot.database.dao.Student;
 import com.springboot.database.dao.User;
 import com.springboot.database.sddata.UserMapper;
+import com.springboot.database.service.IShowService;
 import com.springboot.database.smdata.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,9 @@ public class MulitDataController {
 	@Autowired
 	private StudentMapper studentMapper;
 
+	@Autowired
+	private IShowService iShowService;
+
 	@RequestMapping("/insa")
 	public String ins() {
 		User user = new User();
@@ -48,5 +52,13 @@ public class MulitDataController {
 		s.setName("sun");
 		int i = studentMapper.insertStudent(s);
 		return i + s.toString();
+	}
+
+	@RequestMapping("/test")
+	public String show() {
+
+		iShowService.handleData();
+
+		return "success";
 	}
 }
