@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: spring-task
+server:
+  port: 8071

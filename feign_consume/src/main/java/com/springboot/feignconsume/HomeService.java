@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 创建人:     huangyang
  * 创建时间:   2018/8/20 20:38
  */
-@FeignClient("eureka-provider")
+@FeignClient(serviceId = "eureka-provider", configuration = SmsFeignClientConfig.class)
 public interface HomeService {
 
 	@GetMapping("/home")
