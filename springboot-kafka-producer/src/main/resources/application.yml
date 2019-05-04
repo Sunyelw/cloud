@@ -1,2 +1,10 @@
 server:
   port: 8089
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: 10.0.75.1:9092,10.0.75.1:9093,10.0.75.1:9094
+      enable-auto-commit: true
+      group-id: foo
+      auto-offset-reset: earliest
