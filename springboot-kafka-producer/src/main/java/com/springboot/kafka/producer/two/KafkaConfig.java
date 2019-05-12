@@ -55,11 +55,6 @@ public class KafkaConfig {
         return props;
     }
 
-    @Bean
-    public Listener listener() {
-        return new Listener();
-    }
-
     @Bean()
     public KafkaTemplate<Integer, String> kafkaJava(
             @Qualifier("factoryJava") ProducerFactory<Integer, String> producerFactory) {

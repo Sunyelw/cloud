@@ -3,6 +3,7 @@ package com.springboot.kafka.producer.three;
 import com.springboot.kafka.producer.utils.CommonConst;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -29,8 +30,9 @@ public class KafkaProducer {
     private Map<String, Object> producerConfigs(){
         Map<String, Object> props = new HashMap <> ();
         props.put (ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, CommonConst.BROKER_SERVER);
-        props.put (ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put (ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, IntegerSerializer.class);
         props.put (ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, P1.class + "," + P2.class);
 
         return props;
     }
@@ -40,7 +42,7 @@ public class KafkaProducer {
         return new DefaultKafkaProducerFactory <> (producerConfigs ());
     }
 
-    @Bean()
+    @Bean
     public KafkaTemplate<Integer, String> kafkaBoot(
             @Qualifier(value = "factoryBoot") ProducerFactory<Integer, String> producerFactory) {
         return new KafkaTemplate <> (producerFactory);
