@@ -1,14 +1,15 @@
 # 配置文件中心
 spring:
   application:
-    name: spring-config-server
+    name: asia-config-server
   cloud:
     config:
+      fail-fast: true
       server:
         git:
-          uri: https://gitee.com/Sunyelw/springcloud-config.git
-          force-pull: true
-          delete-untracked-branches: true
+          username: configserver
+          password:
+          uri: http://10.21.20.235/configserver/spring-config-repo.git
 
 #  访问路径:
 #  http://localhost:${server.port}}/[{search-paths}]/{profile}/{label}

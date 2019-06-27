@@ -1,0 +1,142 @@
+ Configutation:
+  name: Default
+  Properties:
+    Property:
+      - name: log-path
+        value: "logs"
+  Appenders:
+    #输出到控制台
+    Console:
+      name: CONSOLE
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %X{X-B3-TraceId} %clr{---}{faint} %clr{[%15
+        .15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx"
+    # 输出到文件
+    RollingFile:
+      - name: FILE
+        fileName: ${log-path}/pinkstone-kafka.data
+        filePattern: "${log-path}/pinkstone-kafka.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        PatternLayout:
+          pattern: "%d{yyyyMMddHHmmss}|0000016003|%-level|%X{X-B3-TraceId}|%d{yyyy-MM-dd HH:mm:ss.SSS} %t %c{1} %L - %m%throwable{separator(##)}%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100MB
+        DefaultRollOverStrategy:
+          max: 1
+      - name: MARKETKAFKAERROR
+        fileName: ${log-path}/uc/kafka/marketKafkaError.data
+        filePattern: "${log-path}/uc/kafka/marketKafkaError.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        PatternLayout:
+          pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100MB
+        DefaultRollOverStrategy:
+          max: 10
+      - name: MARKETKAFKAMESSAGE
+        fileName: ${log-path}/uc/kafka/marketKafkaMessage.data
+        filePattern: "${log-path}/uc/kafka/marketKafkaMessage.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        PatternLayout:
+          pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100MB
+        DefaultRollOverStrategy:
+          max: 10
+      - name: kafkaLoggerUpdateUserInfoForAudit
+        fileName: ${log-path}/uc/kafka/KafkaMsgUpdateUserForAudit.data
+        filePattern: "${log-path}/uc/kafka/KafkaMsgUpdateUserForAudit.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        PatternLayout:
+          pattern: "%m%throwable{}%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100MB
+        DefaultRollOverStrategy:
+         max: 10
+      - name: kafkaLoggerUpdateUserInfoForAuditErr
+        fileName: ${log-path}/uc/kafka/KafkaMsgUpdateUserForAuditErr.data
+        filePattern: "${log-path}/uc/kafka/KafkaMsgUpdateUserForAudit.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        PatternLayout:
+          pattern: "%m%throwable{}%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100MB
+        DefaultRollOverStrategy:
+         max: 10
+      - name: kafkaLoggerAsyncInfo
+        fileName: ${log-path}/uc/kafka/kafkaLoggerAsyncInfo.data
+        filePattern: "${log-path}/uc/kafka/kafkaLoggerAsyncInfo.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        PatternLayout:
+          pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100MB
+        DefaultRollOverStrategy:
+          max: 10
+      - name: kafkaLoggerAsyncError
+        fileName: ${log-path}/uc/kafka/kafkaLoggerAsyncError.data
+        filePattern: "${log-path}/uc/kafka/kafkaLoggerAsyncError.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        PatternLayout:
+          pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100MB
+        DefaultRollOverStrategy:
+          max: 10
+      - name: kafkaErrorLog
+        fileName: ${log-path}/error/kafkaErrorLog.data
+        filePattern: "${log-path}/error/kafkaErrorLog.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        PatternLayout:
+          pattern: "%d{yyyyMMddHHmmss}|0000016003|%-level|%X{X-B3-TraceId}|%d{yyyy-MM-dd HH:mm:ss.SSS} %t %c{1} %L - %m%throwable{separator(##)}%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 100MB
+        DefaultRollOverStrategy:
+          max: 1
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        - ref: FILE
+        - ref: CONSOLE
+  # 自定义服务的业务日志，服务名称请根据实际情况修改
+    Logger:
+    - name: MARKETKAFKAERROR
+      additivity: false
+      level: error
+      AppenderRef:
+        - ref: MARKETKAFKAERROR
+    - name: MARKETKAFKAMESSAGE
+      additivity: false
+      level: info
+      AppenderRef:
+        - ref: MARKETKAFKAMESSAGE
+    - name: kafkaLoggerUpdateUserInfoForAudit
+      level: info
+      AppenderRef:
+        - ref: kafkaLoggerUpdateUserInfoForAudit
+    - name: kafkaLoggerUpdateUserInfoForAuditErr
+      level: info
+      AppenderRef:
+        - ref: kafkaLoggerUpdateUserInfoForAuditErr
+    - name: kafkaLoggerAsyncInfo
+      additivity: false
+      level: info
+      AppenderRef:
+        - ref: kafkaLoggerAsyncInfo
+    - name: kafkaLoggerAsyncError
+      additivity: false
+      level: error
+      AppenderRef:
+        - ref: kafkaLoggerAsyncError
+    - name: com.migu.pinkstone-kafka
+      additivity: false
+      level: info
+      AppenderRef:
+        - ref: FILE
+    - name: kafkaErrorLog
+      additivity: false
+      level: info
+      AppenderRef:
+        - ref: FILE

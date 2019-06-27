@@ -23,6 +23,8 @@
 		<module>spring-practice-thread</module>
 		<module>spring-code</module>
 		<module>spring-task</module>
+		<module>asia-config-server</module>
+		<module>asia-kafka-consumer</module>
 	</modules>
 
 	<name>cloud</name>

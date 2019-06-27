@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: asia-kafka
+  cloud:
+    config:
+      name: ms-pinkstone-kafka
+      uri: http://10.21.24.188:8861
+      profile: develop
+      label: master
+      failFast: true
