@@ -4,13 +4,14 @@ spring:
     name: config-server
   cloud:
     config:
+      fail-fast: true
+      label: master
+      profile: dev
       server:
-        git:
-          uri: https://gitee.com/Sunyelw/springcloud-config.git
-#          profile: dev
-          label: master
-          failFast: true
-
+              git:
+                uri: https://gitee.com/Sunyelw/springcloud-config.git
+                force-pull: true
+                delete-untracked-branches: true
 #  访问路径:
 #  http://localhost:${server.port}}/[{search-paths}]/{profile}/{label}
 #  ../{application}/{profile}[/{label}]
