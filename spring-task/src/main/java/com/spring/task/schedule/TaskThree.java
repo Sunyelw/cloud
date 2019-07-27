@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TaskThree {
 
-    @Scheduled(cron = "0/1 * * * * ?")
+    @Scheduled(cron = "0/1 * * * 2 ?")
     public void taskThree() throws InterruptedException {
 
         System.out.println("TaskThree start..");

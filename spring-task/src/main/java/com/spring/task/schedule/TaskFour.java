@@ -3,6 +3,9 @@ package com.spring.task.schedule;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * 项目名称:   pinkstone
  * 包:        com.spring.task.schedule
@@ -14,13 +17,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class TaskFour {
 
+    private ExecutorService es = Executors.newFixedThreadPool(10);
+
     @Scheduled(cron = "0/1 * * * * ?")
     public void taskFour() {
 
-        System.out.println("taskFour start..");
-        for (int i = 0; i < 10000; i++) {
-            System.out.println(Thread.currentThread().getName() + " FOUR =====================" + i + "==========");
-        }
-        System.out.println("taskFour end..");
+        System.out.println("*****************");
+        show();
+
     }
+
+    private void show(){
+
+        ExecutorService es = Executors.newFixedThreadPool(10);
+
+        es.execute(() -> System.out.println(Thread.currentThread().getId() + " == start..."));
+        es.shutdown();
+
+
+    }
+
 }
