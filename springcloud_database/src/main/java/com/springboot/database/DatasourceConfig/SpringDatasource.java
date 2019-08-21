@@ -27,7 +27,7 @@ import javax.sql.DataSource;
 public class SpringDatasource {
 
 	@Bean(name = "smDatasource")
-	@ConfigurationProperties(prefix = "spring.datasource.twodatasource")
+	@ConfigurationProperties(prefix = "spring.datasource.mybatisdatasource")
 	@Primary
 	public DataSource smDatasource() {
 		return DataSourceBuilder.create().build();

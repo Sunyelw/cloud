@@ -1,6 +1,5 @@
 package com.springboot.database.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.springboot.database.dao.Student;
 import com.springboot.database.dao.User;
 import com.springboot.database.sddata.UserMapper;

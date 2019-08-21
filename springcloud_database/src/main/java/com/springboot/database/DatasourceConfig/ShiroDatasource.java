@@ -27,7 +27,7 @@ import javax.sql.DataSource;
 public class ShiroDatasource {
 
 	@Bean(name = "sdDatasource")
-	@ConfigurationProperties(prefix = "spring.datasource.onedatasource")
+	@ConfigurationProperties(prefix = "spring.datasource.shirodatasource")
 	public DataSource sdDatasource() {
 		return DataSourceBuilder.create().build();
 	}
