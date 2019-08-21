@@ -1,6 +1,7 @@
 package com.springboot.kafka.consumer.listener.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -50,6 +51,15 @@ public class SecKakfaConsumerConfig {
     }
 
     /**
+     * 消费者
+     * @return
+     */
+    @Bean
+    public KafkaConsumer<String, String> secKafkaConsumer() {
+        return new KafkaConsumer<>(consumerConfigs());
+    }
+
+    /**
      * Consumer configs map.
      *
      * @return the map
@@ -63,6 +73,9 @@ public class SecKakfaConsumerConfig {
         propsMap.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         propsMap.put(ConsumerConfig.GROUP_ID_CONFIG, secKafkaConsumerProperties.getGroupId());
         propsMap.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, secKafkaConsumerProperties.getAutoOffsetReset());
+
+        // 分区订阅策略 partition.assignment.strategy, 默认是Range， 必须要实现 PartitionAssignor 接口
+        propsMap.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, "org.apache.kafka.clients.consumer.RoundRobinAssignor");
         return propsMap;
     }
 

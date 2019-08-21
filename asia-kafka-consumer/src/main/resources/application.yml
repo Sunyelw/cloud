@@ -8,3 +8,7 @@ server:
 #      enable-auto-commit: true
 #      group-id: next
 #      auto-offset-reset: latest
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver

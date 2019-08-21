@@ -2,6 +2,8 @@ package com.springboot.kafka.consumer.listener.kafkaconsumer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
@@ -20,7 +22,7 @@ import java.util.List;
 @Slf4j
 public class SunTopicConsumer {
 
-    @KafkaListener(topics = {"sun-topic"}, containerFactory = "secKafkaListenerContainerFactory")
+//    @KafkaListener(topics = {"sun-topic"}, containerFactory = "secKafkaListenerContainerFactory")
     public void sunListener(List<ConsumerRecord<String, String>> list, Acknowledgment ack) {
 
         for (ConsumerRecord<String, String> record : list) {

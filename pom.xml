@@ -25,6 +25,7 @@
 		<module>spring-task</module>
 		<module>asia-config-server</module>
 		<module>asia-kafka-consumer</module>
+		<module>spring-web</module>
 	</modules>
 
 	<name>cloud</name>
