@@ -1,4 +1,4 @@
-package com.springboot.eureka.provider.hy;
+package com.springboot.eureka.provider.email.service;
 
 
 import com.springboot.eureka.provider.dto.Header;
@@ -7,15 +7,12 @@ import com.springboot.eureka.provider.dto.SendSmsRequest;
 import com.springboot.eureka.provider.dto.SendSmsResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 项目名称:   pinkstone
- * 包:        com.migu.pinkstone.hy
+ * 包:        com.migu.pinkstone.service
  * 类名称:     SmsSendTestTask
  * 类描述:     生产短信_发送task
  * 创建人:     huangyang

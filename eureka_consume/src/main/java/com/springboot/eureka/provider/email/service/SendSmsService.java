@@ -1,5 +1,6 @@
-package com.springboot.eureka.provider.hy;
+package com.springboot.eureka.provider.email.service;
 
+import com.springboot.eureka.provider.config.FeignClientConfig;
 import com.springboot.eureka.provider.dto.SendSmsRequest;
 import com.springboot.eureka.provider.dto.SendSmsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 项目名称:   pinkstone
- * 包:        com.migu.pinkstone.hy
+ * 包:        com.migu.pinkstone.service
  * 类名称:     SendSmsService
  * 类描述:     发送短信 Eureka 注入
  * 创建人:     huangyang

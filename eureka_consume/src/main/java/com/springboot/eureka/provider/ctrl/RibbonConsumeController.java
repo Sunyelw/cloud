@@ -1,4 +1,4 @@
-package com.springboot.eureka.provider;
+package com.springboot.eureka.provider.ctrl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,5 +23,4 @@ public class RibbonConsumeController {
 	public String hello() {
 		return restTemplate.getForEntity("http://eureka-provider/home", String.class).getBody();
 	}
-
 }

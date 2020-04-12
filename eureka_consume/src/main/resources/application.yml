@@ -10,3 +10,15 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8760/eureka/
 #      defaultZone: http://10.181.12.115:30203//eureka/
+
+
+eureka-consume:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+ribbon:
+  eager-load:
+    enabled: true
+    clients: eureka-provider
+logging:
+  config: classpath:log4j2.yml
+

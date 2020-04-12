@@ -1,4 +1,4 @@
-package com.springboot.eureka.provider.hy;
+package com.springboot.eureka.provider.email.service;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.web.context.request.RequestAttributes;

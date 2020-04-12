@@ -1,7 +1,10 @@
-package com.springboot.eureka.provider.hy;
+package com.springboot.eureka.provider.config;
 
+import com.springboot.eureka.provider.email.service.SmsHandleUtil;
+import feign.Logger;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -9,7 +12,7 @@ import java.util.Date;
 
 /**
  * 项目名称:   pinkstone
- * 包:        com.springboot.eureka.provider.hy
+ * 包:        com.springboot.eureka.provider.config
  * 类名称:     FeignClientConfig
  * 类描述:     feignClien config
  * 创建人:     huangyang
@@ -33,5 +36,14 @@ public class FeignClientConfig implements RequestInterceptor {
     private String tranDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         return sdf.format(new Date());
+    }
+
+    /**
+     * 配置日志级别, 不打印 SynchronousMethodHandler#executeAndDecode 有线程阻塞问题
+     * @return
+     */
+    @Bean
+    Logger.Level getLevel() {
+        return Logger.Level.NONE;
     }
 }

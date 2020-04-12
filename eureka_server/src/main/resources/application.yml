@@ -10,3 +10,5 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname:localhost}:${server.port}/eureka/
+  server:
+    peer-node-connect-timeout-ms: 1000
