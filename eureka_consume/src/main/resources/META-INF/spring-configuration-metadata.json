@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name":"hy.msg",
+      "sourceType":"com.springboot.eureka.provider.config.AutoCompleteConfig",
+      "type":"com.springboot.eureka.provider.config.AutoCompleteConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.springboot.eureka.provider.config.AutoCompleteConfig",
+      "defaultValue": false,
+      "name": "hy.msg.name",
+      "description": "hy | msg | name",
+      "type": "java.lang.String"
+    }
+  ]
+}

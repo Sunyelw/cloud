@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>com.spring</groupId>
 		<artifactId>cloud</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>V1.5.7</version>
 	</parent>
 
 	<artifactId>spring-code</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>V1.5.7</version>
 	<name>spring-code</name>
 	<description>Demo project for Spring Boot</description>
 

@@ -5,7 +5,7 @@
 
 	<groupId>com.springboot</groupId>
 	<artifactId>feign_consume</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>V1.5.7</version>
 	<packaging>jar</packaging>
 
 	<name>feign_consume</name>
@@ -14,27 +14,43 @@
 	<parent>
 		<groupId>com.spring</groupId>
 		<artifactId>cloud</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>V1.5.7</version>
 	</parent>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
 
 	<dependencies>
 		<!-- feign 消费 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-httpclient</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>io.github.openfeign</groupId>
+					<artifactId>feign-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
         <!-- eureka  -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
-	</dependencies>
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>-->
+            <!--<version>1.4.7.RELEASE</version>-->
+        <!--</dependency>-->
+
+    </dependencies>
 
 	<build>
 		<plugins>

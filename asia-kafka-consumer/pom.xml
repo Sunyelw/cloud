@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>asia-kafka-consumer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>V1.5.7</version>
 	<packaging>jar</packaging>
 
 	<name>asia-kafka-consumer</name>
@@ -13,27 +13,10 @@
 	<parent>
 		<groupId>com.spring</groupId>
 		<artifactId>cloud</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>V1.5.7</version>
 	</parent>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
         <!-- kafka配置 start -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

@@ -9,12 +9,16 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8760/eureka/
-#      defaultZone: http://10.181.12.115:30203//eureka/
-
 
 eureka-consume:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+## Important, this default is close
+feign:
+  hystrix:
+    enabled: true
+
 ribbon:
   eager-load:
     enabled: true
@@ -22,3 +26,12 @@ ribbon:
 logging:
   config: classpath:log4j2.yml
 
+## none-effective
+hystrix:
+  threadpool:
+    command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 10000

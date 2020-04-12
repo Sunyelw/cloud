@@ -5,7 +5,7 @@
 
 	<groupId>com.spring</groupId>
 	<artifactId>cloud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>V1.5.7</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -34,15 +34,36 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.3.RELEASE</version>
+		<version>1.5.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+    <!-- 项目用了私服地址作为 central, 所以镜像代理不能代理 central -->
+    <!-- 我的解决方式是在自己项目中添加阿里镜像作为 central -->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>ALI_MAVEN_DEPENDENCY</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>central</id>-->
+            <!--<name>ALI_MAVEN_PLUGIN</name>-->
+            <!--<url>http://maven.aliyun.com/nexus/content/groups/public</url>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
+
 	<properties>
+		<spring-cloud.version>Dalston.SR3</spring-cloud.version>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
+        <compile.version>1.8</compile.version>
 
 		<lombok.version>1.16.18</lombok.version>
 		<common.lang3.version>3.4</common.lang3.version>
@@ -96,8 +117,15 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
+
+        <!-- 识别 yml 文件 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+        </dependency>
 	</dependencies>
 
+	<!-- SpringCloud 依赖版本管理 -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -107,6 +135,18 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+            <!-- eureka client -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka-server</artifactId>
+                <version>1.3.4.RELEASE</version>
+            </dependency>
+            <!-- eureka server -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-netflix-eureka-server</artifactId>
+                <version>1.3.4.RELEASE</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -115,6 +155,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <jvmArguments>java -server -Xms128m -Xmx128m -XX:MaxMetaspaceSize=32m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/logs/java_heapdump.hprof -jar /maven/${project.build.finalName}.jar
+                    </jvmArguments>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>

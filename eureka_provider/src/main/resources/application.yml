@@ -8,12 +8,14 @@ spring:
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10 # EUREKA_CLIENT 心跳检测时长, 默认30秒
+    prefer-ip-address: true
   client:
     registryFetchIntervalSeconds: 10 # EUREKA_CLIENT 间隔多久去拉取服务注册信息, 默认为30秒
     instanceInfoReplicationIntervalSeconds: 5 #复制实例变化信息到eureka服务器所需要的时间间隔（s），默认为30秒
     initialInstanceInfoReplicationIntervalSeconds: 5 #最初复制实例信息到eureka服务器所需的时间（s），默认为40秒
     serviceUrl:
       defaultZone: http://localhost:8760/eureka/
-
+logging:
+  level: debug
 
 

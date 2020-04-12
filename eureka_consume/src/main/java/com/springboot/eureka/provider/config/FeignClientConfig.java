@@ -38,12 +38,19 @@ public class FeignClientConfig implements RequestInterceptor {
         return sdf.format(new Date());
     }
 
-    /**
-     * 配置日志级别, 不打印 SynchronousMethodHandler#executeAndDecode 有线程阻塞问题
-     * @return
-     */
-    @Bean
-    Logger.Level getLevel() {
-        return Logger.Level.NONE;
-    }
+    /* 这里不能加, 会有重复bean 报错 */
+
+    /*
+    The web application [ROOT] appears to have started a thread named [RxIoScheduler-1 (Evictor)]
+    but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+    */
+
+//    /**
+//     * 配置日志级别, 不打印 SynchronousMethodHandler#executeAndDecode 有线程阻塞问题
+//     * @return
+//     */
+//    @Bean
+//    Logger.Level getLevel() {
+//        return Logger.Level.NONE;
+//    }
 }

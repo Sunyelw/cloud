@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * 项目名称:   pinkstone
  * 包:        com.springboot.eureka.provider.ctrl
@@ -18,24 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class HomeController {
 
-//    @Autowired
-//    private IRule iRule;
-//    @Autowired
-//    private ILoadBalancer iLoadBalancer;
-//    @Autowired
-//    private ServerListFilter serverListFilter;
-//    @Autowired
-//    private ServerList serverList;
-//    @Autowired
-//    private IPing iPing;
-
-
     @Autowired
     private HelloService helloService;
 
     @RequestMapping("/one")
     public String hm() {
 
+        log.error("start: {}", new SimpleDateFormat("HHmmssSSS").format(new Date()));
         String resp = helloService.home();
 
         log.error("Hello_Resp:" + resp);

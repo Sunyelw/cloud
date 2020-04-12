@@ -3,7 +3,7 @@ package com.springboot.eureka.provider.email.service;
 import com.springboot.eureka.provider.config.FeignClientConfig;
 import com.springboot.eureka.provider.dto.SendSmsRequest;
 import com.springboot.eureka.provider.dto.SendSmsResponse;
-import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

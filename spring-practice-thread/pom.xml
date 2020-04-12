@@ -7,20 +7,14 @@
 	<parent>
 		<groupId>com.spring</groupId>
 		<artifactId>cloud</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>V1.5.7</version>
 	</parent>
 
 	<artifactId>spring-practice-thread</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>V1.5.7</version>
 
 	<name>spring-practice-thread</name>
 	<description>Demo project for Spring Boot to practice thread</description>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
 
 	<dependencies>
 		<!-- need -->
