@@ -3,6 +3,7 @@ package com.springboot.eureka.provider.api;
 import com.springboot.eureka.provider.config.FeignClientConfig;
 import com.springboot.eureka.provider.config.RibbonBalanceRuleConfig;
 import com.springboot.eureka.provider.fallback.HelloServiceFallback;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.http.MediaType;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RibbonClient(name = "ribbon-eureka-provider", configuration = RibbonBalanceRuleConfig.class)
 @FeignClient(value = "eureka-provider",
         configuration = FeignClientConfig.class, fallback = HelloServiceFallback.class)
+@Qualifier("helloService")
 public interface HelloService {
 
     @RequestMapping(value = "/home", method = RequestMethod.POST,

@@ -5,6 +5,9 @@ spring:
   application:
     name: eureka-consume
 
+logging:
+  config: classpath:log4j2.yml
+
 eureka:
   client:
     serviceUrl:
@@ -23,15 +26,42 @@ ribbon:
   eager-load:
     enabled: true
     clients: eureka-provider
-logging:
-  config: classpath:log4j2.yml
+  ConnectTimeout: 3000 			#请求连接 超时时间
+  ReadTimeout: 2000 				#请求处理 超时时间
+  OkToRetryOnAllOperations: false 	#对所有请求都进行重试
+  MaxAutoRetriesNextServer: 1 		#切换实例的重试次数
+  MaxAutoRetries: 0 				#对当前实例的重试次数
+  MaxTotalConnections: 5
+  MaxConnectionsPerHost: 5
+  MaxTotalHttpConnections: 5
+  PoolMaxThreads: 10
 
 ## none-effective
 hystrix:
+  metrics:
+    enabled: false
   threadpool:
+    default:
+      coreSize: 5							# 线程池核心线程数量
+      maxQueueSize: 5						# 等待的请求最大数量
+#      queueSizeRejectionThreshold: 100		# 等待队列之外
     command:
       default:
         execution:
           isolation:
             thread:
-              timeoutInMilliseconds: 10000
+              timeoutInMilliseconds: 10000 	#超时时间
+      home: #方法名称
+        execution:
+          isolation:
+            thread:
+               timeoutInMilliseconds: 10000  #指定方法超时时间
+        circuitBreaker:
+          enable: true # 设置熔断你
+          requestVolumeThreshold: 1 		# 错误数量
+          sleepWindowInMilliseconds: 1000 	# 触发断路后的时间值, 触发断路器后10s内都会拒绝请求, 10s后关闭 circuitBreaker
+          errorThresholdPercentage: 1 		# 错误率 | 错误率超过这个值后触发断路器, 默认 50
+
+ribbon-eureka-provider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.ZoneAvoidanceRule

@@ -1,4 +1,5 @@
 Configutation:
+  status: debug
   name: Default
   Properties:
     Property:
@@ -21,15 +22,21 @@ Configutation:
           pattern: "%d{yyyyMMddHHmmss}|0000016009|%-level|%X{X-B3-TraceId}|%d{yyyy-MM-dd HH:mm:ss.SSS} %t %c{1} %L - %m%throwable{separator(##)}%n"
         Policies:
           SizeBasedTriggeringPolicy:
-            size: 100MB
+            size: 10MB
   Loggers:
     Root:
-      level: info
+      level: error
       AppenderRef:
         - ref: FILE
         - ref: CONSOLE
     AsyncLogger:
       - name: com.springboot.eureka.provider
+        additivity: false
+        level: debug
+        AppenderRef:
+          - ref: FILE
+          - ref: CONSOLE
+      - name: org.apache
         additivity: false
         level: info
         AppenderRef:

@@ -156,7 +156,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <jvmArguments>java -server -Xms128m -Xmx128m -XX:MaxMetaspaceSize=32m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/logs/java_heapdump.hprof -jar /maven/${project.build.finalName}.jar
+                    <jvmArguments>java -server -Xms128m -Xmx128m -XX:MaxMetaspaceSize=32m -XX:MaxGCPauseMillis=200 -DAsyncLogger.RingBufferSize=1048576 -DAsyncLoggerConfig.RingBufferSize=1048576 -Dlog4j2.AsyncQueueFullPolicy=ENQUEUE -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/logs/java_heapdump.hprof -jar /maven/${project.build.finalName}.jar
                     </jvmArguments>
                 </configuration>
 			</plugin>
