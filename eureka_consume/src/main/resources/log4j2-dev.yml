@@ -1,6 +1,6 @@
 Configutation:
-  status: debug
-  name: Default
+#  status: debug
+  name: sunyelw
   Properties:
     Property:
       - name: log-path
@@ -25,20 +25,19 @@ Configutation:
             size: 10MB
   Loggers:
     Root:
-      level: error
+      level: info
       AppenderRef:
         - ref: FILE
         - ref: CONSOLE
     AsyncLogger:
+      - name: a.b.c
+        additivity: false
+        level: trace
+        AppenderRef:
+          - ref: FILE
       - name: com.springboot.eureka.provider
         additivity: false
         level: debug
-        AppenderRef:
           - ref: FILE
-          - ref: CONSOLE
-      - name: org.apache
-        additivity: false
-        level: info
         AppenderRef:
-          - ref: FILE
           - ref: CONSOLE

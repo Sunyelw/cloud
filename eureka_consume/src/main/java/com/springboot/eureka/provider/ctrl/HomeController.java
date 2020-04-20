@@ -1,6 +1,8 @@
 package com.springboot.eureka.provider.ctrl;
 
 import com.springboot.eureka.provider.api.HelloService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.status.StatusLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,8 @@ import java.util.Date;
 @RestController
 public class HomeController {
 
-    private Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private Logger logger = LoggerFactory.getLogger(LogManager.ROOT_LOGGER_NAME);
+    private final static StatusLogger STATUS_LOGGER = StatusLogger.getLogger();
 
     private final HelloService helloService;
 
@@ -48,5 +51,12 @@ public class HomeController {
         logger.error("Hello_Resp:" + resp);
 
         return resp;
+    }
+
+    @RequestMapping("/a")
+    public String one() {
+        LoggerFactory.getLogger(HomeController.class).info("{} - info - msg", logger.getClass().getName());
+        STATUS_LOGGER.info("{} - info - msg", STATUS_LOGGER.toString());
+        return "<h1>.....................</h1>";
     }
 }

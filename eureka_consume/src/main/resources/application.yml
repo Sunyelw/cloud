@@ -6,12 +6,19 @@ spring:
     name: eureka-consume
 
 logging:
-  config: classpath:log4j2.yml
+  config: classpath:log4j2-dev.yml
+
+management:
+  security:
+    enabled: false
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8760/eureka/
+    register-with-eureka: false
+    fetch-registry: false
+    enabled: false
 
 eureka-consume:
   ribbon:

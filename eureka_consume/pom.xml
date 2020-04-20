@@ -61,6 +61,15 @@
 			<artifactId>disruptor</artifactId>
 			<version>3.4.1</version>
 		</dependency>
+
+		<!-- 测试多 StaticLoggerBinder 下的场景 -->
+<!--
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+-->
+
 	</dependencies>
 
 	<build>
