@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,6 +26,7 @@ import java.util.Date;
 public class HomeController {
 
     private Logger logger = LoggerFactory.getLogger(LogManager.ROOT_LOGGER_NAME);
+
     private final static StatusLogger STATUS_LOGGER = StatusLogger.getLogger();
 
     private final HelloService helloService;
@@ -58,5 +60,43 @@ public class HomeController {
         LoggerFactory.getLogger(HomeController.class).info("{} - info - msg", logger.getClass().getName());
         STATUS_LOGGER.info("{} - info - msg", STATUS_LOGGER.toString());
         return "<h1>.....................</h1>";
+    }
+
+    public static void main(String[] args) throws InterruptedException{
+
+        new Thread(() -> run("abc", false)).start();
+        Thread.sleep(1000);
+        new Thread(() -> run("def", true)).start();
+
+    }
+
+//    private ThreadLocal<Logger> loggerThreadLocal = new ThreadLocal <>();
+
+    private static void run(String str, boolean isGC) {
+
+        try {
+            ThreadLocal<String> th = new ThreadLocal <>();
+            th.set(str);
+
+            if (isGC) {
+                System.out.println("gc");
+                System.gc();
+            }
+
+            // 获取 ThreadLocalMap
+            Thread t = Thread.currentThread();
+            Field thMapField = t.getClass().getDeclaredField("threadLocals");
+            thMapField.setAccessible(true);
+            Object thMapObj = thMapField.get(t);
+
+            // 获取size
+            Field sizeField = thMapObj.getClass().getDeclaredField("size");
+            sizeField.setAccessible(true);
+            int size = (int) sizeField.get(thMapObj);
+
+            System.out.println("size: " + size);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
